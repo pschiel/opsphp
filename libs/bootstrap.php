@@ -17,6 +17,9 @@ require_once 'libs/email.php';
 require_once 'libs/cache.php';
 require_once 'controllers/app_controller.php';
 require_once 'models/app_model.php';
+if (@file_exists('vendor/autoload.php')) {
+    require_once 'vendor/autoload.php';
+}
 
 // error handling
 ini_set('display_errors', DEBUG ? 1 : 0);
