@@ -3,7 +3,6 @@
 // include all necessary classes
 require_once 'config/core.php';
 require_once 'config/database.php';
-require_once 'config/email.php';
 require_once 'libs/app.php';
 require_once 'libs/request.php';
 require_once 'libs/controller.php';
@@ -13,7 +12,6 @@ require_once 'libs/view.php';
 require_once 'libs/helper.php';
 require_once 'libs/db.php';
 require_once 'libs/session.php';
-require_once 'libs/email.php';
 require_once 'libs/cache.php';
 require_once 'controllers/app_controller.php';
 require_once 'models/app_model.php';
