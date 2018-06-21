@@ -93,10 +93,11 @@ class App {
 	 *
 	 * @param string $type "Controller", "Model", "Component" or "Helper"
 	 * @param string $name name of class
+	 * @param array $interfaces one or more interfaces the loaded class has to implement
 	 * @return mixed class instance
 	 * @throws Exception
 	 */
-	public static function load($type, $name) {
+	public static function load($type, $name, $interfaces = []) {
 
 		$camelCaseName = str_replace(' ', '', ucwords(str_replace('_', ' ', $name)));
 		if ($type == 'Controller') {
@@ -126,6 +127,14 @@ class App {
 			throw new Exception('Class not found: ' . $classname);
 		}
 		$instance = new $classname;
+		if (!empty($interfaces)) {
+			$instance_interfaces = class_implements($instance);
+			foreach ($interfaces as $interface) {
+				if (!isset($instance_interfaces[$interface])) {
+					throw new Exception('Interface constraint violation: ' . $classname . ' (must implement: ' . $interface . ')');
+				}
+			}
+		}
 		return $instance;
 
 	}

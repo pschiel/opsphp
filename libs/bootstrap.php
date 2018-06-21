@@ -15,6 +15,9 @@ require_once 'libs/session.php';
 require_once 'libs/cache.php';
 require_once 'controllers/app_controller.php';
 require_once 'models/app_model.php';
+foreach (glob('interfaces/*.php') as $filename) {
+	include $filename;
+}
 if (@file_exists('vendor/autoload.php')) {
     require_once 'vendor/autoload.php';
 }
